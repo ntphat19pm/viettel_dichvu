@@ -15,9 +15,12 @@ class dichvu extends Model
         'tendv',
         'thoigian',
         'gia',
-        'khuyenmai'
+        'khuyenmai_id'
     ];
     public function dangkydichvu(){
         return $this->hasMany(dangkydichvu::class,'dichvu_id','id');
+    }
+    public function khuyenmai(){
+        return $this->hasOne(khuyenmai::class,'id','khuyenmai_id');
     }
 }

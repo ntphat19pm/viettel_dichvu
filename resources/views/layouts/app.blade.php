@@ -19,6 +19,7 @@
     <!-- Custom CSS -->
     <link href="{{url('public/adminmart')}}/dist/css/style.min.css" rel="stylesheet">
     <link rel="stylesheet" href="http://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css">
+    <link href="{{url('public/adminmart')}}/assets/extra-libs/datatables.net-bs4/css/dataTables.bootstrap4.css" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -281,28 +282,40 @@
                     <ul id="sidebarnav">
                         <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="{{route('home')}}"
                                 aria-expanded="false"><i data-feather="home" class="feather-icon"></i><span
-                                    class="hide-menu">Dashboard</span></a></li>
+                                    class="hide-menu">Trang chủ</span></a></li>
                         <li class="list-divider"></li>
-                        <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="{{ route('dichvu') }}"
-                                aria-expanded="false"><i data-feather="home" class="feather-icon"></i><span
-                                    class="hide-menu">Dịch vụ</span></a></li>
-                        <li class="list-divider"></li>
-                        <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="{{ route('doanhnghiep') }}"
-                            aria-expanded="false"><i data-feather="home" class="feather-icon"></i><span
-                                class="hide-menu">Doanh nghiệp</span></a></li>
-                        <li class="list-divider"></li>
+                        <li class="nav-small-cap"><span class="hide-menu">Danh mục chi tiết</span></li>
+                        <li class="sidebar-item"> <a class="sidebar-link has-arrow" href="javascript:void(0)"
+                                aria-expanded="false"><i data-feather="file-text" class="feather-icon"></i><span
+                                    class="hide-menu">Quản lý </span></a>
+                            <ul aria-expanded="false" class="collapse  first-level base-level-line">
+                                <li class="sidebar-item"><a href="{{ route('dichvu') }}" class="sidebar-link"><span
+                                            class="hide-menu"> Dịch vụ
+                                        </span></a>
+                                </li>
+                                <li class="sidebar-item"><a href="{{ route('khuyenmai') }}" class="sidebar-link"><span
+                                            class="hide-menu"> Khuyến mãi
+                                        </span></a>
+                                </li>
+                                <li class="sidebar-item"><a href="{{ route('doanhnghiep') }}" class="sidebar-link"><span
+                                            class="hide-menu"> Doanh nghiệp
+                                        </span></a>
+                                </li>
+                            </ul>
+                        </li>
                         <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="{{ route('dangkydichvu') }}"
                             aria-expanded="false"><i data-feather="home" class="feather-icon"></i><span
                                 class="hide-menu">Đăng ký dịch vụ</span></a></li>
+                        
                         @if(Auth::user()->role=='admin')
                         <li class="list-divider"></li>
+                        <li class="nav-small-cap"><span class="hide-menu">Quản lý người dùng</span></li>
                         <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="{{ route('user') }}"
                             aria-expanded="false"><i data-feather="home" class="feather-icon"></i><span
-                                class="hide-menu">Người dùng</span></a></li>
-                        <li class="list-divider"></li>
+                                class="hide-menu">Tài khoản</span></a></li>
                         <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="{{ route('nhanvien') }}"
                             aria-expanded="false"><i data-feather="home" class="feather-icon"></i><span
-                                class="hide-menu">Nhân viên</span></a></li>
+                                class="hide-menu">Thông tin nhân viên</span></a></li>
                         @endif
             </ul>
                 </nav>
@@ -541,7 +554,6 @@
     <script src="http://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
     <!--This page JavaScript -->
     <script src="{{url('public/adminmart')}}/assets/extra-libs/c3/d3.min.js"></script>
-    <script src="{{url('public/adminmart')}}/assets/extra-libs/c3/c3.min.js"></script>
     <script src="{{url('public/adminmart')}}/assets/libs/chartist/dist/chartist.min.js"></script>
     <script src="{{url('public/adminmart')}}/assets/libs/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js"></script>
     <script src="{{url('public/adminmart')}}/assets/extra-libs/jvector/jquery-jvectormap-2.0.2.min.js"></script>
@@ -551,6 +563,7 @@
     <script src="{{url('public/adminmart')}}/assets/extra-libs/datatables.net/js/jquery.dataTables.min.js"></script>
     <script src="{{url('public/adminmart')}}/dist/js/pages/datatable/datatable-basic.init.js"></script>
     {!! Toastr::message() !!}
+    
 </body>
 
 </html>

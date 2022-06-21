@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\dichvu;
+use App\Models\khuyenmai;
 use Toastr;
 use Excel;
 use App\Imports\dichvu_import;
@@ -29,7 +30,8 @@ class DichvuController extends Controller
      */
     public function create()
     {
-        return view('dichvu.create');  
+        $khuyenmai=khuyenmai::all();
+        return view('dichvu.create',compact('khuyenmai'));  
     }
 
     /**
@@ -44,7 +46,7 @@ class DichvuController extends Controller
         $data->tendv=$request->tendv;
         $data->thoigian=$request->thoigian;
         $data->gia=$request->gia;
-        $data->khuyenmai=$request->khuyenmai;
+        $data->khuyenmai_id=$request->khuyenmai_id;
         if($data->save()) {
             Toastr::success('Thêm dịch vụ thành công','Thêm dịch vụ');
             return redirect('dichvu');
@@ -71,7 +73,8 @@ class DichvuController extends Controller
     public function edit($id)
     {
         $data=dichvu::find($id);
-        return view('dichvu.edit',compact('data'));
+        $khuyenmai=khuyenmai::all();
+        return view('dichvu.edit',compact('data','khuyenmai'));
     }
 
     /**
@@ -87,7 +90,7 @@ class DichvuController extends Controller
         $data->tendv=$request->tendv;
         $data->thoigian=$request->thoigian;
         $data->gia=$request->gia;
-        $data->khuyenmai=$request->khuyenmai;
+        $data->khuyenmai_id=$request->khuyenmai_id;
         
        if($data->save()) {
             Toastr::success('Sửa dịch vụ thành công','Sửa dịch vụ');

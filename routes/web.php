@@ -14,6 +14,7 @@ use App\Http\Controllers\NhanvienController;
 use App\Http\Controllers\DichvuController;
 use App\Http\Controllers\DoanhnghiepController;
 use App\Http\Controllers\DangkydichvuController;
+use App\Http\Controllers\KhuyenmaiController;
 use App\Http\Controllers\UserController;
 
 Auth::routes();
@@ -85,3 +86,12 @@ Route::post('/dangkydichvu/sua/{id}', [DangkydichvuController::class, 'update'])
 Route::get('/dangkydichvu/xoa/{id}', [DangkydichvuController::class, 'destroy'])->name('dangkydichvu.destroy');
 Route::post('/dangkydichvu/nhap', [DangkydichvuController::class, 'postNhap'])->name('dangkydichvu.nhap');
 Route::get('/dangkydichvu/nhap', [DangkydichvuController::class, 'getXuat'])->name('dangkydichvu.xuat');
+
+Route::get('/khuyenmai', [KhuyenmaiController::class, 'index'])->name('khuyenmai');
+Route::get('/khuyenmai/them', [KhuyenmaiController::class, 'create'])->name('khuyenmai.create');
+Route::post('/khuyenmai/them', [KhuyenmaiController::class, 'store'])->name('khuyenmai.store');
+Route::get('/khuyenmai/sua/{id}', [KhuyenmaiController::class, 'edit'])->name('khuyenmai.edit');
+Route::post('/khuyenmai/sua/{id}', [KhuyenmaiController::class, 'update'])->name('khuyenmai.update');
+Route::get('/khuyenmai/xoa/{id}', [KhuyenmaiController::class, 'destroy'])->name('khuyenmai.destroy');
+Route::post('/khuyenmai/nhap', [KhuyenmaiController::class, 'postNhap'])->name('khuyenmai.nhap');
+Route::get('/khuyenmai/nhap', [KhuyenmaiController::class, 'getXuat'])->name('khuyenmai.xuat');

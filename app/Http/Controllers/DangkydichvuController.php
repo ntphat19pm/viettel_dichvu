@@ -47,22 +47,24 @@ class DangkydichvuController extends Controller
         $data->dichvu_id=$request->dichvu_id;
         $data->ngaydangky=Carbon::now('Asia/Ho_Chi_Minh');
 
-        $tgdichvu=dichvu::where('id',$request->dichvu_id)->select('thoigian')->first();
-        if($tgdichvu->thoigian==6)
-        {
-            $data->ngayketthuc=Carbon::now('Asia/Ho_Chi_Minh')->addMonths(6);
-            $data->ngaybao=Carbon::now('Asia/Ho_Chi_Minh')->addMonths(4);
-        }
-        elseif($tgdichvu->thoigian==12)
-        {
-            $data->ngayketthuc=Carbon::now('Asia/Ho_Chi_Minh')->addMonths(12);
-            $data->ngaybao=Carbon::now('Asia/Ho_Chi_Minh')->addMonths(10);
-        }
-        elseif($tgdichvu->thoigian==24)
-        {
-            $data->ngayketthuc=Carbon::now('Asia/Ho_Chi_Minh')->addMonths(24);
-            $data->ngaybao=Carbon::now('Asia/Ho_Chi_Minh')->addMonths(22);
-        }
+        $tgdichvu=dichvu::where('id',$request->dichvu_id)->select('thoigian','khuyenmai_id')->first();
+        $data->ngayketthuc=Carbon::now('Asia/Ho_Chi_Minh')->addMonths($tgdichvu->thoigian)->addMonths($tgdichvu->khuyenmai_id);
+        $data->ngaybao=Carbon::now('Asia/Ho_Chi_Minh')->addMonths($tgdichvu->thoigian)->addMonths($tgdichvu->khuyenmai_id)->subMonths(1);
+        // if($tgdichvu->thoigian==6)
+        // {
+        //     $data->ngayketthuc=Carbon::now('Asia/Ho_Chi_Minh')->addMonths(6);
+        //     $data->ngaybao=Carbon::now('Asia/Ho_Chi_Minh')->addMonths(5);
+        // }
+        // elseif($tgdichvu->thoigian==12)
+        // {
+        //     $data->ngayketthuc=Carbon::now('Asia/Ho_Chi_Minh')->addMonths(12);
+        //     $data->ngaybao=Carbon::now('Asia/Ho_Chi_Minh')->addMonths(11);
+        // }
+        // elseif($tgdichvu->thoigian==24)
+        // {
+        //     $data->ngayketthuc=Carbon::now('Asia/Ho_Chi_Minh')->addMonths(24);
+        //     $data->ngaybao=Carbon::now('Asia/Ho_Chi_Minh')->addMonths(23);
+        // }
         
         if($data->save()) {
             Toastr::success('Thêm đăng ký dịch vụ thành công','Thêm đăng ký dịch vụ');

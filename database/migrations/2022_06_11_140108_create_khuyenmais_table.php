@@ -13,12 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('dichvu', function (Blueprint $table) {
+        Schema::create('khuyenmai', function (Blueprint $table) {
             $table->id();
-            $table->string('tendv', 100);
-            $table->double('thoigian', 100);
-            $table->double('khuyenmai_id', 100);
-            $table->double('gia', 100);
+            $table->string('tenkhuyenmai', 100);
+            $table->double('tgkhuyenmai', 100);
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrentOnUpdate();
             $table->engine = 'InnoDB';
@@ -32,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('dichvu');
+        Schema::dropIfExists('khuyenmai');
     }
 };

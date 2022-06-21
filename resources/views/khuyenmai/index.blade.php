@@ -8,11 +8,11 @@
                     <h4 class="card-title">Danh sách dịch vụ</h4>
                     <div class="d-grid gap-2 d-md-flex justify-content-md-end mb-3">
 
-                        <a href="{{route('dichvu.create')}}" class="btn btn-outline-secondary mt-2"><i class="fas fa-plus-circle"></i> Thêm dịch vụ</a> 
+                        <a href="{{route('khuyenmai.create')}}" class="btn btn-outline-secondary mt-2"><i class="fas fa-plus-circle"></i> Thêm khuyến mãi</a> 
                         <button type="button" class="btn btn-outline-warning mt-2 ml-3" data-toggle="modal" data-target="#modal-secondary" href="#nhap"> <i class="fas fa-upload"></i> Nhập Excel</button>
-                        <a href="{{ route('dichvu.xuat') }}" class="btn btn-outline-success ml-3 mt-2"><i class="fas fa-download"></i> Xuất ra Excel</a>
+                        <a href="{{ route('khuyenmai.xuat') }}" class="btn btn-outline-success ml-3 mt-2"><i class="fas fa-download"></i> Xuất ra Excel</a>
                     </div>
-                    <form action="{{ route('dichvu.nhap') }}" method="post" enctype="multipart/form-data">
+                    <form action="{{ route('khuyenmai.nhap') }}" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="modal fade" id="modal-secondary">
                           <div class="modal-dialog">
@@ -45,32 +45,20 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th class="text-center">Tên dịch vụ</th>
-                                    <th class="text-center">Thời gian</th>
-                                    <th class="text-center">Khuyến mãi</th>
-                                    <th class="text-center">Giá</th>
+                                    <th class="text-center">Tên khuyến mãi</th>
+                                    <th class="text-center">Thời gian khuyến mãi</th>
                                     <th class="text-center">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($dichvu as $value)
+                                @foreach($khuyenmai as $value)
                                 <tr>
                                     <th>{{ $loop->iteration }}</th>
-                                    <td width="45%" class="text-center">{{$value->tendv}}</td>
+                                    <td width="45%" class="text-center">{{$value->tenkhuyenmai}}</td>
+                                    <td class="text-center">{{$value->tgkhuyenmai}}</td>
                                     <td class="text-center">
-                                        @if ($value->thoigian==6)
-                                        6 tháng
-                                        @elseif($value->thoigian==12)
-                                        1 năm
-                                        @elseif($value->thoigian==24)
-                                        2 năm
-                                        @endif
-                                    </td>
-                                    <td class="text-center">{{$value->khuyenmai_id}}</td>
-                                    <td class="text-center">{{$value->gia}}</td>
-                                    <td class="text-center">
-                                      <a href="{{ route('dichvu.edit', ['id' => $value->id]) }}"><i class="fa fa-edit mr-3"></i></a>
-                                      <a href="{{ route('dichvu.destroy', ['id' => $value->id]) }}" onclick="return confirm('Bạn có muốn xóa lĩnh vực không?')"><i class="fa fa-trash-alt text-danger"></i></a>
+                                      <a href="{{ route('khuyenmai.edit', ['id' => $value->id]) }}"><i class="fa fa-edit mr-3"></i></a>
+                                      <a href="{{ route('khuyenmai.destroy', ['id' => $value->id]) }}" onclick="return confirm('Bạn có muốn xóa lĩnh vực không?')"><i class="fa fa-trash-alt text-danger"></i></a>
                                     </td> 
                                 </tr>
                                 @endforeach

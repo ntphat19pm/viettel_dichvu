@@ -22,8 +22,9 @@ class HomeController extends Controller
         if(Auth::check())
         {
             $dangkydichvu = dangkydichvu::all();
+            $ngaytb = dangkydichvu::select('ngaybao')->get();
             $ngay=Carbon::now('Asia/Ho_Chi_Minh');
-            return view('index',compact('dangkydichvu','ngay'));
+            return view('index',compact('dangkydichvu','ngay','ngaytb'));
         }
         else
         {
