@@ -47,6 +47,10 @@ class DoanhnghiepController extends Controller
         $data->diachi=$request->diachi;
         $data->nguoidaidien=$request->nguoidaidien;
         $data->sdt=$request->sdt;
+        $data->caphoc=$request->caphoc;
+        $data->huyen=$request->huyen;
+        $data->loaihinh=$request->loaihinh;
+        $data->coquan=$request->coquan;
         if($data->save()) {
             Toastr::success('Thêm doanh nghiệp thành công','Thêm doanh nghiệp');
             return redirect('doanhnghiep');
@@ -92,6 +96,10 @@ class DoanhnghiepController extends Controller
         $data->diachi=$request->diachi;
         $data->nguoidaidien=$request->nguoidaidien;
         $data->sdt=$request->sdt;
+        $data->caphoc=$request->caphoc;
+        $data->huyen=$request->huyen;
+        $data->loaihinh=$request->loaihinh;
+        $data->coquan=$request->coquan;
         
        if($data->save()) {
             Toastr::success('Sửa doanh nghiệp thành công','Sửa doanh nghiệp');

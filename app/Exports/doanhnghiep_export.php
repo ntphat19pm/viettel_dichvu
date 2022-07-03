@@ -15,9 +15,13 @@ class doanhnghiep_export implements FromCollection, WithHeadings, WithMapping
             'Mã số thuế',
             'Mã trường',
             'Tên doanh nghiệp',
-            'Địa chỉ',
+            'Cấp học',
+            'Loại hình đào tạo',
             'Người đại diện',
             'Số điện thoại',
+            'Huyện',
+            'Địa chỉ',
+            'Số điện thoại cơ quan',
         ];
     }
     public function map($row): array
@@ -26,9 +30,13 @@ class doanhnghiep_export implements FromCollection, WithHeadings, WithMapping
             $row->mst,
             $row->matruong,
             $row->tendoanhnghiep,
-            $row->diachi,
+            $row->caphoc,
+            $row->loaihinh,
             $row->nguoidaidien,
             $row->sdt,
+            $row->huyen,
+            $row->diachi,
+            $row->coquan,
         ];
     }
     /**

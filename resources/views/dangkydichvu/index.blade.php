@@ -61,9 +61,70 @@
                                     <td class="text-center">{{date("d-m-Y H:m:s",strtotime($value->ngaydangky))}}</td>
                                     <td class="text-center">{{date("d-m-Y H:m:s",strtotime($value->ngayketthuc))}}</td>
                                     <td class="text-center">
-                                        <a href="{{ route('dangkydichvu.edit', ['id' => $value->id]) }}"><i class="fa fa-edit"></i></a>
-                                        <a href="{{ route('dangkydichvu.destroy', ['id' => $value->id]) }}" onclick="return confirm('Bạn có muốn xóa lĩnh vực không?')"><i class="fa fa-trash-alt text-danger"></i></a>
+                                        <a href="{{ route('dangkydichvu.show', ['id' => $value->id]) }}"><i class="fas fa-print text-success ml-2"></i></a>
+                                        <a data-toggle="modal" data-target="#modal-secondary{{$value->id}}" href="#nhap"> <i class="fas fa-eye text-warning ml-2"></i></a>
+                                        <a href="{{ route('dangkydichvu.edit', ['id' => $value->id]) }}"><i class="fa fa-edit ml-2"></i></a>
+                                        <a href="{{ route('dangkydichvu.destroy', ['id' => $value->id]) }}" onclick="return confirm('Bạn có muốn xóa lĩnh vực không?')"><i class="fa fa-trash-alt text-danger ml-2"></i></a>
                                     </td> 
+
+                                    <form action="" method="post" enctype="multipart/form-data">
+                                      @csrf
+                                      <div class="modal fade" id="modal-secondary{{$value->id}}">
+                                        <div class="modal-dialog modal-lg modal-dialog-centered">
+                                          <div class="modal-content">
+                                            <div class="modal-header">
+                                              <h4 class="modal-title">THÔNG TIN ĐĂNG KÝ - {{$value->mahd}}</h4>
+                                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                              </button>
+                                            </div>
+                                            <div class="modal-body">
+                                              <div class="text-center"><b>THÔNG TIN NHÀ TRƯỜNG</b></div>
+                                              <div class="row">
+                                                <div class="col-lg-8">
+                                                  Tên: {{$value->doanhnghiep->tendoanhnghiep}}
+                                                  <br>Địa chỉ: {{$value->doanhnghiep->diachi}}
+                                                </div>
+                                                <div class="col-lg-4">
+                                                  Mã số thuế: {{$value->doanhnghiep->mst}}
+                                                  <br>Số điện thoại: {{$value->doanhnghiep->sdt}}
+                                                </div>
+                                              </div>
+                                              <hr>
+                                              <div class="text-center"><b>THÔNG TIN DỊCH VỤ</b></div>
+                                              <div class="row">
+                                                <div class="col-lg-8">
+                                                  Tên: {{$value->dichvu->tendv}}
+                                                  <br>Khuyến mãi: {{$value->dichvu->khuyenmai_id}} tháng
+                                                </div>
+                                                <div class="col-lg-4">
+                                                  Thời gian dịch vụ: {{$value->dichvu->thoigian}} tháng
+                                                  <br>Giá dịch vụ: {{number_format($value->dichvu->gia)}} vnđ
+                                                </div>
+                                              </div>
+                                              <hr>
+                                              <div class="text-center"><b>THÔNG TIN ĐĂNG KÝ</b></div>
+                                              <div class="row">
+                                                <div class="col-lg-8">
+                                                  Ngày đăng ký: {{date("d-m-Y",strtotime($value->ngaydangky))}}
+                                                  <br>Số lượng: {{$value->soluong}}
+                                                </div>
+                                                <div class="col-lg-4">
+                                                  Ngày kết thúc: {{date("d-m-Y",strtotime($value->ngayketthuc))}}
+                                                  <br>Giá thành tiền: {{number_format($value->thanhtien)}} vnđ
+                                                </div>
+                                              </div>
+                                            </div>
+                                            <div class="modal-footer justify-content-between">
+                                              <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Close</button>
+                                              <a type="submit" href="{{ route('dangkydichvu.in',$value->id) }}" class="btn btn-outline-success"><i class="fas fa-print"></i> Export Portal</a>
+                                            </div>
+                                          </div>
+                                          <!-- /.modal-content -->
+                                        </div>
+                                        <!-- /.modal-dialog -->
+                                      </div>
+                                    </form> 
                                 </tr>
                                 @endforeach
                             </tbody>

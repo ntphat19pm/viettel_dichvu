@@ -56,7 +56,7 @@
                                 @foreach($dichvu as $value)
                                 <tr>
                                     <th>{{ $loop->iteration }}</th>
-                                    <td width="45%" class="text-center">{{$value->tendv}}</td>
+                                    <td class="text-center">{{$value->tendv}}</td>
                                     <td class="text-center">
                                         @if ($value->thoigian==6)
                                         6 tháng
@@ -66,7 +66,7 @@
                                         2 năm
                                         @endif
                                     </td>
-                                    <td class="text-center">{{$value->khuyenmai_id}}</td>
+                                    <td class="text-center">{{$value->khuyenmai->tenkhuyenmai}}</td>
                                     <td class="text-center">{{$value->gia}}</td>
                                     <td class="text-center">
                                       <a href="{{ route('dichvu.edit', ['id' => $value->id]) }}"><i class="fa fa-edit mr-3"></i></a>

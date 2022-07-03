@@ -6,8 +6,34 @@
             <div class="card">
                 <div class="card-body table-responsive">
                     <h4 class="card-title">Danh sách doanh nghiệp</h4>
+                    {{-- <div class="col-lg-6">
+                      <div class="form-group">
+                          <label for="caphoc">Cấp học<span class="text-danger font-weight-bold">*</span></label>
+                          <select id="caphoc" class="form-control custom-select @error('caphoc') is-invalid @enderror" name="caphoc" required autofocus>
+                              <option value="">Chọn</option>
+                              <option value="SGD">Sở Giáo dục và Đào tạo</option>
+                              <option value="PGD">Phòng Giáo dục và Đào tạo</option>
+                              <option value="DH">Đại học</option>
+                              <option value="LC">Liên cấp</option>
+                              <option value="MN">Mầm non</option>
+                              <option value="MG">Mẫu giáo</option>
+                              <option value="NT">Nhà trẻ</option>
+                              <option value="TH">Tiểu học</option>
+                              <option value="THCS">Trung học cơ sở</option>
+                              <option value="THPT">Trung học phổ thông</option>
+                              <option value="TTGDTX">Trung tâm giáo dục thường xuyên</option>
+                          </select>
+                      </div>
+                  </div> --}}
+                  <form action="" class="form-inline mb-3">
+                    <div class="form-group ">
+                      <input class="form-control" name="tukhoa" placeholder="Nhập tên danh mục">
+                     </div>
+                     <button type="submit" class="btn btn-primary">
+                      <i class ="fas fa-search"></i>
+                    </button>
+                    </form>
                     <div class="d-grid gap-2 d-md-flex justify-content-md-end mb-3">
-
                         <a href="{{route('doanhnghiep.create')}}" class="btn btn-outline-secondary mt-2"><i class="fas fa-plus-circle"></i> Thêm doanh nghiệp</a> 
                         <button type="button" class="btn btn-outline-warning mt-2 ml-3" data-toggle="modal" data-target="#modal-secondary" href="#nhap"> <i class="fas fa-upload"></i> Nhập Excel</button>
                         <a href="{{ route('doanhnghiep.xuat') }}" class="btn btn-outline-success ml-3 mt-2"><i class="fas fa-download"></i> Xuất ra Excel</a>

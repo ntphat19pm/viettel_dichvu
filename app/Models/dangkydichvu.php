@@ -13,6 +13,7 @@ class dangkydichvu extends Model
 
     protected $fillable = [
         'doanhnghiep_id',
+        'mahd',
         'dichvu_id',
         'ngaydangky',
         'ngayketthuc'

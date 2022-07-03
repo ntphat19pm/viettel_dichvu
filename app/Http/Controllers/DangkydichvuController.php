@@ -6,6 +6,7 @@ use App\Models\dangkydichvu;
 use App\Models\dichvu;
 use Carbon\Carbon;
 use Toastr;
+use File;
 use App\Models\doanhnghiep;
 use Illuminate\Http\Request;
 
@@ -45,11 +46,15 @@ class DangkydichvuController extends Controller
         $data=new dangkydichvu;
         $data->doanhnghiep_id=$request->doanhnghiep_id;
         $data->dichvu_id=$request->dichvu_id;
+        $data->soluong=$request->soluong;
+        $data->mahd=$request->mahd;
         $data->ngaydangky=Carbon::now('Asia/Ho_Chi_Minh');
 
-        $tgdichvu=dichvu::where('id',$request->dichvu_id)->select('thoigian','khuyenmai_id')->first();
+        $tgdichvu=dichvu::where('id',$request->dichvu_id)->select('thoigian','khuyenmai_id','gia')->first();
         $data->ngayketthuc=Carbon::now('Asia/Ho_Chi_Minh')->addMonths($tgdichvu->thoigian)->addMonths($tgdichvu->khuyenmai_id);
         $data->ngaybao=Carbon::now('Asia/Ho_Chi_Minh')->addMonths($tgdichvu->thoigian)->addMonths($tgdichvu->khuyenmai_id)->subMonths(1);
+        
+        $data->thanhtien=$tgdichvu->gia * $request->soluong;
         // if($tgdichvu->thoigian==6)
         // {
         //     $data->ngayketthuc=Carbon::now('Asia/Ho_Chi_Minh')->addMonths(6);
@@ -78,9 +83,12 @@ class DangkydichvuController extends Controller
      * @param  \App\Models\dangkydichvu  $dangkydichvu
      * @return \Illuminate\Http\Response
      */
-    public function show(dangkydichvu $dangkydichvu)
+    public function show( $id)
     {
-        //
+        $data=dangkydichvu::find($id);
+        $doanhnghiep=doanhnghiep::all();
+        $dichvu=dichvu::all();
+        return view('dangkydichvu.show',compact('data','doanhnghiep','dichvu'));
     }
 
     /**
@@ -89,9 +97,12 @@ class DangkydichvuController extends Controller
      * @param  \App\Models\dangkydichvu  $dangkydichvu
      * @return \Illuminate\Http\Response
      */
-    public function edit(dangkydichvu $dangkydichvu)
+    public function edit( $id)
     {
-        //
+        $data=dangkydichvu::find($id);
+        $doanhnghiep=doanhnghiep::all();
+        $dichvu=dichvu::all();
+        return view('dangkydichvu.edit',compact('data','doanhnghiep','dichvu'));
     }
 
     /**
@@ -101,9 +112,18 @@ class DangkydichvuController extends Controller
      * @param  \App\Models\dangkydichvu  $dangkydichvu
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, dangkydichvu $dangkydichvu)
+    public function update(Request $request, $id)
     {
-        //
+        $data=dangkydichvu::find($id);
+        $data->doanhnghiep_id=$request->doanhnghiep_id;
+        $data->dichvu_id=$request->dichvu_id;
+        $data->soluong=$request->soluong;
+        $data->mahd=$request->mahd;
+        
+       if($data->save()) {
+            Toastr::success('Sửa đăng ký dịch vụ thành công','Sửa đăng ký dịch vụ');
+            return redirect('dangkydichvu');
+       }
     }
 
     /**
@@ -115,5 +135,39 @@ class DangkydichvuController extends Controller
     public function destroy(dangkydichvu $dangkydichvu)
     {
         //
+    }
+
+    public function wordExport( $id)
+    {
+        $data=dangkydichvu::find($id);
+        $doanhnghiep=doanhnghiep::all();
+        $dichvu=dichvu::all();
+        $template= new \PhpOffice\PhpWord\PhpWord('word-template/abc.docx');
+        $section = $template->addSection();
+        $text = $section->addText($data->id);
+        $text = $section->addText($data->doanhnghiep->tendoanhnghiep);
+        $text = $section->addText($data->dichvu->tendv);
+        $text = $section->addText($data->ngaydangky);
+        $text = $section->addText($data->ngayketthuc);
+
+        $objWriter = \PhpOffice\PhpWord\IOFactory::createWriter($template, 'Word2007');
+        $fileName=$data->doanhnghiep->tendoanhnghiep;
+        $objWriter->save($fileName . '.docx');
+        return response()->download($fileName . '.docx')->deleteFileAfterSend(true);
+    }
+
+    public function getIn(Request $request, $id)
+    {
+     
+        $data=dangkydichvu::find($id);
+        $doanhnghiep=doanhnghiep::all();
+        $dichvu=dichvu::all();
+        return view('dangkydichvu.in',compact('data','doanhnghiep','dichvu'));
+        
+    }
+
+    public function hopdong()
+    {
+        return view('dangkydichvu.hopdong');
     }
 }

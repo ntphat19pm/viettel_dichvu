@@ -17,10 +17,21 @@ class doanhnghiep extends Model
         'tendoanhnghiep',
         'diachi',
         'sdt',
+        'coquan',
+        'huyen',
+        'caphoc',
+        'loaihinh',
         'nguoidaidien'
     ];
 
     public function doanhnghiep(){
         return $this->hasMany(doanhnghiep::class,'doanhnghiep_id','id');
+    }
+    public function scopeSearch($query)
+    {
+        if($tukhoa=request()->tukhoa){
+            $query=$query->where('tendoanhnghiep','like','%'.$tukhoa.'%');
+        }
+        return $query;
     }
 }

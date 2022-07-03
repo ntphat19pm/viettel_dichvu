@@ -17,6 +17,6 @@ class khuyenmai extends Model
     ];
 
     public function dichvu(){
-        return $this->hasMany(dichvu::class,'khuyenmai','id');
+        return $this->hasMany(dichvu::class,'khuyenmai','tgkhuyenmai');
     }
 }

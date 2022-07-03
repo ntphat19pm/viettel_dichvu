@@ -21,6 +21,6 @@ class dichvu extends Model
         return $this->hasMany(dangkydichvu::class,'dichvu_id','id');
     }
     public function khuyenmai(){
-        return $this->hasOne(khuyenmai::class,'id','khuyenmai_id');
+        return $this->hasOne(khuyenmai::class,'tgkhuyenmai','khuyenmai_id');
     }
 }

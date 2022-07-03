@@ -8,6 +8,10 @@
         @csrf
         <div class="row">
             <div class="col-lg-6">
+                <label for="mahd" class="form-label">Số hợp đồng</label>
+                <input type="text" class="form-control" id="mahd" name="mahd" autocomplete="off" required>
+            </div>
+            <div class="col-lg-6">
                 <div class="form-group">
                     <label for="doanhnghiep_id">Doanh nghiệp<span class="text-danger font-weight-bold">*</span></label>
                     <select id="doanhnghiep_id" class="form-control custom-select @error('doanhnghiep_id') is-invalid @enderror" name="doanhnghiep_id" required autofocus>
@@ -28,6 +32,11 @@
                         @endforeach
                     </select>
                 </div>
+            </div>
+            
+            <div class="col-lg-6">
+                <label for="soluong" class="form-label">Số lượng</label>
+                <input type="number" class="form-control" id="soluong" name="soluong" autocomplete="off" required>
             </div>
         </div>
                

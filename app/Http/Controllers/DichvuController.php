@@ -20,7 +20,8 @@ class DichvuController extends Controller
     public function index()
     {
         $dichvu = dichvu::all();
-        return view('dichvu.index',compact('dichvu'));
+        $khuyenmai = khuyenmai::all();
+        return view('dichvu.index',compact('dichvu','khuyenmai'));
     }
 
     /**

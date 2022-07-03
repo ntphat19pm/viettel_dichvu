@@ -26,9 +26,13 @@
                 <input type="number" class="form-control" value="{{$data->gia}}" id="gia" name="gia" autocomplete="off" required>
             </div>
             <div class="col-lg-6">
-                <div class="mb-3">
-                    <label for="khuyenmai" class="form-label">Khuyến mãi</label>
-                    <input type="text" class="form-control" value="{{$data->khuyenmai}}" id="khuyenmai" name="khuyenmai" autocomplete="off" required>
+                <div class="form-group">
+                    <label for="khuyenmai_id">Sản phẩm<span class="text-danger font-weight-bold">*</span></label>
+                    <select id="khuyenmai_id" class="form-control custom-select @error('khuyenmai_id') is-invalid @enderror" name="khuyenmai_id" required autofocus>
+                        @foreach($khuyenmai as $value)
+                        <option value="{{ $value->tgkhuyenmai }}" {{($data->khuyenmai_id== $value->tgkhuyenmai)?'selected':'' }}>{{$value->tenkhuyenmai}}</option>
+                        @endforeach
+                    </select>
                 </div>
             </div>
         </div>

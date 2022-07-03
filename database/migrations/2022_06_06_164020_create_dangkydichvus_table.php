@@ -15,8 +15,11 @@ return new class extends Migration
     {
         Schema::create('dangkydichvu', function (Blueprint $table) {
             $table->id();
+            $table->string('mahd', 100)->unique();
             $table->foreignId('doanhnghiep_id')->constrained('doanhnghiep')->onDelete('cascade');;
             $table->foreignId('dichvu_id')->constrained('dichvu')->onDelete('cascade');;
+            $table->double('soluong', 100);
+            $table->double('thanhtien', 100);
             $table->timestamp('ngaydangky');
             $table->timestamp('ngayketthuc');
             $table->timestamp('ngaybao');

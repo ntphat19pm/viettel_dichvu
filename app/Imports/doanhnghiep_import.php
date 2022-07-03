@@ -21,9 +21,13 @@ class doanhnghiep_import implements ToModel, WithHeadingRow
             'mst' => $row['ma_so_thue'],
             'matruong' => $row['ma_truong'],
             'tendoanhnghiep' => $row['ten_doanh_nghiep'],
+            'caphoc' => $row['cap_hoc'],
+            'loaihinh' => $row['loai_hinh_dao_tao'],
             'diachi' => $row['dia_chi'],
             'nguoidaidien' => $row['nguoi_dai_dien'],
+            'huyen' => $row['huyen'],
             'sdt' => $row['so_dien_thoai'],
+            'coquan' => $row['so_dien_thoai_co_quan'],
         ]);
     }
 }
