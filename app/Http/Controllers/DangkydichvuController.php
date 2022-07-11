@@ -156,7 +156,7 @@ class DangkydichvuController extends Controller
         return response()->download($fileName . '.docx')->deleteFileAfterSend(true);
     }
 
-    public function getIn(Request $request, $id)
+    public function getIn($id)
     {
      
         $data=dangkydichvu::find($id);
@@ -166,8 +166,11 @@ class DangkydichvuController extends Controller
         
     }
 
-    public function hopdong()
+    public function hopdong($id)
     {
-        return view('dangkydichvu.hopdong');
+        $data=dangkydichvu::find($id);
+        $doanhnghiep=doanhnghiep::all();
+        $dichvu=dichvu::all();
+        return view('dangkydichvu.hopdong',compact('data','doanhnghiep','dichvu'));
     }
 }

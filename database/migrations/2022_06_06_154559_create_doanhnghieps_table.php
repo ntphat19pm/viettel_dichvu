@@ -18,7 +18,7 @@ return new class extends Migration
             $table->double('mst', 100)->unique();
             $table->string('matruong', 100)->unique();
             $table->string('tendoanhnghiep', 100)->unique();
-            $table->string('diachi', 100);
+            $table->text('diachi');
             $table->string('nguoidaidien', 100);
             $table->string('sdt', 10);
             $table->string('coquan', 11);

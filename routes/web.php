@@ -88,7 +88,7 @@ Route::get('/dangkydichvu/xoa/{id}', [DangkydichvuController::class, 'destroy'])
 Route::post('/dangkydichvu/nhap', [DangkydichvuController::class, 'postNhap'])->name('dangkydichvu.nhap');
 Route::get('/dangkydichvu/nhap', [DangkydichvuController::class, 'getXuat'])->name('dangkydichvu.xuat');
 Route::get('/dangkydichvu/in/{id}', [DangkydichvuController::class, 'getIn'])->name('dangkydichvu.in');
-Route::get('/dangkydichvu/hopdong', [DangkydichvuController::class, 'hopdong'])->name('dangkydichvu.hopdong');
+Route::get('/dangkydichvu/hopdong{id}', [DangkydichvuController::class, 'hopdong'])->name('dangkydichvu.hopdong');
 
 Route::get('/khuyenmai', [KhuyenmaiController::class, 'index'])->name('khuyenmai');
 Route::get('/khuyenmai/them', [KhuyenmaiController::class, 'create'])->name('khuyenmai.create');

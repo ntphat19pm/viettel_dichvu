@@ -26,7 +26,7 @@
         </div>
                
         {{-- <a href="{{ route('dangkydichvu.export', ['id' => $data->id]) }}" class="btn btn-primary mt-3">Export</a> --}}
-        <a href="{{ route('dangkydichvu.in',$data->id) }}" class="btn btn-primary mt-3">Export Portals</a>
+        <a href="{{ route('dangkydichvu.hopdong',$data->id) }}" class="btn btn-primary mt-3">Export Etep</a>
     </form>
     </div>
 </div>

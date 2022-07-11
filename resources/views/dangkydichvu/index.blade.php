@@ -61,7 +61,7 @@
                                     <td class="text-center">{{date("d-m-Y H:m:s",strtotime($value->ngaydangky))}}</td>
                                     <td class="text-center">{{date("d-m-Y H:m:s",strtotime($value->ngayketthuc))}}</td>
                                     <td class="text-center">
-                                        <a href="{{ route('dangkydichvu.show', ['id' => $value->id]) }}"><i class="fas fa-print text-success ml-2"></i></a>
+                                        {{-- <a href="{{ route('dangkydichvu.show', ['id' => $value->id]) }}"><i class="fas fa-print text-success ml-2"></i></a> --}}
                                         <a data-toggle="modal" data-target="#modal-secondary{{$value->id}}" href="#nhap"> <i class="fas fa-eye text-warning ml-2"></i></a>
                                         <a href="{{ route('dangkydichvu.edit', ['id' => $value->id]) }}"><i class="fa fa-edit ml-2"></i></a>
                                         <a href="{{ route('dangkydichvu.destroy', ['id' => $value->id]) }}" onclick="return confirm('Bạn có muốn xóa lĩnh vực không?')"><i class="fa fa-trash-alt text-danger ml-2"></i></a>
@@ -117,7 +117,8 @@
                                             </div>
                                             <div class="modal-footer justify-content-between">
                                               <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Close</button>
-                                              <a type="submit" href="{{ route('dangkydichvu.in',$value->id) }}" class="btn btn-outline-success"><i class="fas fa-print"></i> Export Portal</a>
+                                              <a href="{{ route('dangkydichvu.in',$value->id) }}" class="btn btn-outline-success"><i class="fas fa-print"></i> Export Portal</a>
+                                              <a href="{{ route('dangkydichvu.hopdong',$value->id) }}" class="btn btn-outline-warning"><i class="fas fa-print"></i> Export Etep</a>
                                             </div>
                                           </div>
                                           <!-- /.modal-content -->

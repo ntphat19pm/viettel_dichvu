@@ -1923,7 +1923,7 @@ margin-left:0cm;text-align:justify;text-justify:inter-ideograph;text-indent:
 120%;font-family:"Times New Roman",serif;color:black'>Căn cứ theo hợp đồng <span style='letter-spacing:-.2pt'>s&#7889;</span>: </span><i><span
 lang=DE style='font-size:13.0pt;line-height:120%;font-family:"Times New Roman",serif;
 color:black'>{{$data->mahd}} </span></i><span lang=DE
-style='font-size:13.0pt;line-height:120%;font-family:"Times New Roman",serif'>giữa Nhà trẻ Hoa Hồng và Viettel An Giang - Chi nhánh Tập đoàn Công nghiệp - Viễn thông Quân đội;</span></p>
+style='font-size:13.0pt;line-height:120%;font-family:"Times New Roman",serif'>giữa {{$data->doanhnghiep->tendoanhnghiep}} và Viettel An Giang - Chi nhánh Tập đoàn Công nghiệp - Viễn thông Quân đội;</span></p>
 
 <p class=MsoNormal style='margin-top:2.0pt;margin-right:0cm;margin-bottom:2.0pt;
 margin-left:0cm;text-indent:31.7pt;line-height:120%'><span lang=DE
